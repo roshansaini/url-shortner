@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<style>
+    .navbar-brand{
+        color: white;
+        font-weight: bold;
+    }
+    .navbar-brand:hover{
+        color:orange;
+
+    }
+    li a {
+        color: white;
+        font-weight: bold;
+    }
+    li a:hover {
+        color:orange;
+        text-underline-position: below;
+    }
+</style>
+
+<title>URL_Shortner</title>
+</head>
+<body>
+     <nav class="navbar fixed-top navbar-expand-sm bg-danger">
+            <a class="navbar-brand" href="#">
+                    <img src="https://lh3.googleusercontent.com/SySPtB-1NobPRQ3KIcTXBGh4U8UfUj86ffrx0wJjXTyOvnrr5DYElOQgwCdbmzu_kA=s180" width="35" height="35" alt="" class="img-responsive"> Url-Shortner
+                </a>
+
+        <a type="a" class="navbar-toggler" data-toggle="collapse" data-target="#navlist">
+            <span class="navbar-toggler-icon"></span>
+        </a>
+
+        <div class="collapse navbar-collapse" id="navlist">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="\" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('print_table') }}"  class="nav-link">DATABASE</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about_us') }}"  class="nav-link">ABOUT US</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <br>
+    <div class="container-fluid">
+        <div class="row col-md-12 text-center">
+            <div class="container-fluid">
+                <div>
+                    <h3 style="color: orangered">DATABASE : </h3>
+                </div>
+                <div class=" row col-md-12">
+                    <table class="table table-bordered table-hover table-warning" style="word-break: break-word;">
+                        <thead class="bg-danger">
+                            <th style="align-content: center;">ID</th>
+                            <th style="align-content: center;">URL</th>
+                            <th style="align-content: center;">SHORT URL</th>
+                        </thead>
+                        <tbody>
+                            {% for row in rows %}
+                            <tr>
+                                <td style="align-content: center">{{ row[0] }}</td>
+                                <td style="align-content: center">{{ row[1] }}</td>
+                                <td style="align-content: center">{{ row[2] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

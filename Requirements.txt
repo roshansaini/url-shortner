@@ -1,0 +1,9 @@
+
+**********REQUIREMENTS TO RUN THE PROJECT***********
+
+1.you need pycharm(professional) to run this project (just open in pycharm and run the project)
+
+2. Internet Connectivity is must
+
+3. for any queries mail me :roshie776@gmail.com
+ 

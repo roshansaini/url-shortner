@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<style>
+    .navbar-brand{
+        color: black;
+        font-weight: bold;
+    }
+    li a {
+        color: white;
+        font-weight: bold;
+    }
+    li a:hover {
+        color: orangered;
+        text-underline-position: below;
+    }
+</style>
+
+<title>URL_Shortner</title>
+</head>
+<body style="background:url('https://github.com/roshansaini/Python-project/blob/master/API%20Front%20End/bg3.jpg?raw=true');background-blend-mode:overlay;">
+     <nav class="navbar fixed-top navbar-expand-sm navbar-default">
+            <a class="navbar-brand" href="#">
+                    <img src="https://lh3.googleusercontent.com/SySPtB-1NobPRQ3KIcTXBGh4U8UfUj86ffrx0wJjXTyOvnrr5DYElOQgwCdbmzu_kA=s180" width="35" height="35" alt="" class="img-responsive"> Url-Shortner
+                </a>
+
+        <a type="a" class="navbar-toggler" data-toggle="collapse" data-target="#navlist">
+            <span class="navbar-toggler-icon"></span>
+        </a>
+
+        <div class="collapse navbar-collapse" id="navlist">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="\" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('print_table') }}"  class="nav-link">DATABASE</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about_us') }}"  class="nav-link">ABOUT US</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+    <div class="container-fluid">
+
+        <div class="col-sm-6 offset-sm-3" style="margin: 150px auto;">
+            <div class="row col-sm-12" style="padding:10px;">
+            {% if not shrt_url %}
+                 <form action="{{ url_for('add_data') }}" method="post" class="col-md-12">
+                <h3 style="color:brown;">Paste Your Link </h3>
+                <br>
+               <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="surl" placeholder="Url" aria-label="Recipient's username" aria-describedby="basic-addon2"required>
+                    <div class="input-group-append">
+                        <button type="submit" class=" btn btn-danger " style="color: white;" >Short Url</button>
+                    </div>
+                </div></form>
+
+            </div>
+        {% else %}
+             <!-- Modal content-->
+             <div class="modal-content">
+                    <div class="modal-header">
+
+                      <h4 class="modal-title text-muted">Your Shorten URL : </h4>
+                      <button type="button" class="close" style="color: brown" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                      <a  href="{{ shrt_url }}" class="text-info"  id="myInput">{{ shrt_url }}</a>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn" style="background-color: brown;color: white;" onclick='copyToClipboard("#myInput")' data-dismiss="modal">Copy</button>
+                      <a type="button" href="\" class="btn" style="background-color: brown;color: white;">Close</a>
+                    </div>
+             </div>
+        {% endif %}
+                {%if msg %}
+             <div>
+                 <h5 style="background-color:brown;color: white;text-align: center;padding: 4px;">{{ msg }}</h5>
+             </div>
+                {% endif %}
+        </div>
+
+
+
+    </div>
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            alert("Link Copied..!!");
+        }
+
+        </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
